@@ -23,3 +23,7 @@ stages:
       inputs:
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
+    - task: PublishBuildArtifacts@1
+      inputs:
+        pathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        artifactName: containerImage

@@ -21,10 +21,9 @@ stages:
     steps:
     - task: Docker@2
       inputs:
-        command: 'buildAndPush'
-        Dockerfile: '**/Dockerfile'
-    - task: CopyFiles@2
+        command: 'build'
+        Dockerfile: '**/Dockerfile'    
+    - task: PublishBuildArtifacts@1
       inputs:
-        sourceFolder: '**/'
-        contents: '**/?(*.tar)'
-        TargetFolder: '**/artifacts'
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'drop'

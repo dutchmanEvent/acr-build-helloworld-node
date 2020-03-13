@@ -13,7 +13,7 @@ variables:
 
 stages:
 - stage: Build
-  displayName: Build image
+  displayName: Build and Push Image
   jobs:  
   - job: Build
     displayName: Build
@@ -22,7 +22,7 @@ stages:
     steps:
     - task: Docker@2
       inputs:
-        command: 'build'
+        command: 'buildAndPush'
         repository: $(imageName)
         Dockerfile: '**/Dockerfile'    
     - task: PublishBuildArtifacts@1

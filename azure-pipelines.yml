@@ -8,7 +8,8 @@ resources:
 - repo: self
 
 variables:
-  tag: '$(Build.BuildId)'
+  imageName: 'pipeline-node-docker'
+
 
 stages:
 - stage: Build
@@ -22,6 +23,7 @@ stages:
     - task: Docker@2
       inputs:
         command: 'build'
+        repository: $(imageName)
         Dockerfile: '**/Dockerfile'    
     - task: PublishBuildArtifacts@1
       inputs:
